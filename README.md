@@ -13,7 +13,7 @@
 
 # Install
 ```console
-git clone https://github.com/komo135/trade-rl.git
+git clone https://github.com/vnvdev/trade-rl.git
 cd trade-rl
 pip install .
 ```
