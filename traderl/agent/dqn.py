@@ -391,7 +391,10 @@ class DQN:
                 print(f"profits = {self.max_profit}, max profits = {self.max_profits}\n"
                       f"pips = {self.max_pip}, max pip = {self.max_pips}")
 
-    def train(self, epoch=600, batch_size=2056):
+    def train(self, epoch=20, batch_size=2056):
+        self._train(epoch, batch_size)
+        self.target_model.set_weights(self.model.get_weights())
+        self.model.save("saved_model/ai-trader")
         plt.figure(figsize=(10, 5))
         plt.plot(self.train_loss)
         plt.plot(self.val_loss)
@@ -400,8 +403,6 @@ class DQN:
         plt.xlabel('Epoch')
         plt.legend(['Train', 'Validation'], loc='upper left')
         plt.show()
-        self._train(epoch, batch_size)
-        self.target_model.set_weights(self.model.get_weights())
 
 
 __all__ = ["DQN"]
